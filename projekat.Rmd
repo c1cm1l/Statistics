@@ -3,23 +3,26 @@ title: "Projekat"
 author: "Tamara Cicmil"
 date: "2025-05-02"
 output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-1. [5pts] Choose at least ve variables from the list above and graphically depict the distribution of these variables for red and for white wines. Compare and interpret the results.
+1.  [5pts] Choose at least ve variables from the list above and graphically depict the distribution of these variables for red and for white wines. Compare and interpret the results.
 
 ```{r}
 #importing the data
 
-redvine<-read.csv("/home/tamara/Desktop/winequality-red.csv", sep = ";")
-whitevine<-read.csv("/home/tamara/Desktop/winequality-white.csv", sep = ";")
+redvine<-read.csv("/home/tamara/Desktop/statistika/winequality-red.csv", sep = ";")
+whitevine<-read.csv("/home/tamara/Desktop/statistika/winequality-white.csv", sep = ";")
 
 ```
 
-a)alcohol levels 
+a)alcohol levels
 
 ```{r}
 par(mfrow=c(1,2))
@@ -35,7 +38,9 @@ hist(whitevine$alcohol,
      col = "cyan",
      border = "black")
 ```
-Alcohol levels in red wine range from 8 to 15%, with peak number of wines having around 9,5%, whereas in white wine range and peak number of wines having the same alcohol percentage is the same, with difference being that white wines' distribution is flatter and more spread out than that of red wines, meaning that they mostly have higher alcohol levels than red wines. Both distributions are right-skewed, which indicates that their mean alcohol level is greater than the median.
+
+Alcohol levels in red wine range from 8 to 15%, with peak number of wines having around 9,5%, whereas in white wine range and peak number of wines having the same alcohol percentage is the same, with difference being that white wines' distribution is flatter and more spread out than that of red wines, meaning that they mostly have higher alcohol levels than red wines.
+Both distributions are right-skewed, which indicates that their mean alcohol level is greater than the median.
 
 b)residual sugar
 
@@ -53,7 +58,9 @@ hist(whitevine$residual.sugar,
      col = "cyan",
      border = "black")
 ```
-Residual sugar levels in red wine range from approximately 0 to 15 g/dm³, with the highest concentration of wines having around 2 g/dm³. In white wine, the range is much wider, extending up to over 60 g/dm³, with the peak still occurring at a low sugar level near 2 g/dm³.
+
+Residual sugar levels in red wine range from approximately 0 to 15 g/dm³, with the highest concentration of wines having around 2 g/dm³.
+In white wine, the range is much wider, extending up to over 60 g/dm³, with the peak still occurring at a low sugar level near 2 g/dm³.
 The key difference is that the distribution of residual sugar in white wine is flatter and more spread out, meaning there is a larger variety of white wines with higher sugar content, including several very sweet wines.
 Both distributions are right-skewed, suggesting that the mean residual sugar level is greater than the median due to a long tail of wines with unusually high sugar content.
 
@@ -73,11 +80,13 @@ hist(whitevine$pH,
      col = "cyan",
      border = "black")
 ```
-pH levels in red wines range from approximately 2.8 to 4.0, with the most frequent values centered around 3.3 to 3.4. In white wines, the pH values are slightly more concentrated, ranging from 2.8 to 3.6, with a peak around 3.2 to 3.3.
+
+pH levels in red wines range from approximately 2.8 to 4.0, with the most frequent values centered around 3.3 to 3.4.
+In white wines, the pH values are slightly more concentrated, ranging from 2.8 to 3.6, with a peak around 3.2 to 3.3.
 The distribution for both wine types is roughly symmetric and bell-shaped, suggesting a normal-like distribution of pH levels.
 Overall, red wines tend to have slightly higher pH values on average, indicating they are less acidic than white wines, which are slightly more acidic due to their lower average pH.
 
-d) 
+d)  
 
 ```{r}
 par(mfrow=c(1,2))
@@ -93,11 +102,13 @@ hist(whitevine$volatile.acidity,
      col = "cyan",
      border = "black")
 ```
-Volatile acidity levels in red wines range from approximately 0.2 to 1.5 g/dm³, with the most frequent values occurring around 0.6. In contrast, white wines show lower volatile acidity values overall, ranging from near 0.0 up to 1.0, with a sharp peak around 0.3.
+
+Volatile acidity levels in red wines range from approximately 0.2 to 1.5 g/dm³, with the most frequent values occurring around 0.6.
+In contrast, white wines show lower volatile acidity values overall, ranging from near 0.0 up to 1.0, with a sharp peak around 0.3.
 The distribution of volatile acidity in white wine is strongly right-skewed, while red wine shows a mildly right-skewed but more symmetric shape.
 These differences indicate that red wines tend to have higher volatile acidity levels.
 
-e) Chlorides
+e)  Chlorides
 
 ```{r}
 par(mfrow=c(1,2))
@@ -113,11 +124,13 @@ hist(whitevine$chlorides,
      col = "cyan",
      border = "black")
 ```
-Histograms show that levels of chlorides in red vine range up to 0,6 (peak is about 0,1) and in white vine those levels reach 0,3%(peak is around 0,05%). Both distributions are right-skewed, meaning most wines have low chloride levels, but a few wines have unusually high values.
 
-Overall, red wines tend to have higher chloride concentrations compared to white wines, both in terms of range and typical values. 
+Histograms show that levels of chlorides in red vine range up to 0,6 (peak is about 0,1) and in white vine those levels reach 0,3%(peak is around 0,05%).
+Both distributions are right-skewed, meaning most wines have low chloride levels, but a few wines have unusually high values.
 
-2. [5pts] Calculate the quartiles and draw the box plot for (a) fixed acidity in red wines and (b) fixed acidity in white wines. Compare and interpret the results. Repeat the experiment for residual sugar and density.
+Overall, red wines tend to have higher chloride concentrations compared to white wines, both in terms of range and typical values.
+
+2.  [5pts] Calculate the quartiles and draw the box plot for (a) fixed acidity in red wines and (b) fixed acidity in white wines. Compare and interpret the results. Repeat the experiment for residual sugar and density.
 
 fixed acidity:
 
@@ -163,8 +176,14 @@ boxplot(redvine$fixed.acidity, whitevine$fixed.acidity,
 
 ```
 
-
-The boxplots and numerical summaries reveal clear differences in fixed acidity between red and white wines. For red wines, the first quartile (Q1) is 7.1, the third quartile (Q3) is 9.2, and the median is 7.9, resulting in an interquartile range (IQR) of 2.1. The interval for detecting outliers is calculated as [3.95, 12.35], and the observed values range from 4.6 to 15.9, with numerous high outliers above the upper limit. In contrast, white wines have a lower and more consistent distribution. The quartiles are Q1 = 6.3 and Q3 = 7.3, with a median of 6.8 and an IQR of just 1.0. The outlier interval for white wines is narrower, from 4.8 to 8.8, and the values range from 3.8 to 14.2. While both wine types exhibit some extreme values, red wines show a much broader range, a higher central tendency, and more variation overall. This suggests that red wines tend to have both higher and more variable fixed acidity than white wines.
+The boxplots and numerical summaries reveal clear differences in fixed acidity between red and white wines.
+For red wines, the first quartile (Q1) is 7.1, the third quartile (Q3) is 9.2, and the median is 7.9, resulting in an interquartile range (IQR) of 2.1.
+The interval for detecting outliers is calculated as [3.95, 12.35], and the observed values range from 4.6 to 15.9, with numerous high outliers above the upper limit.
+In contrast, white wines have a lower and more consistent distribution.
+The quartiles are Q1 = 6.3 and Q3 = 7.3, with a median of 6.8 and an IQR of just 1.0.
+The outlier interval for white wines is narrower, from 4.8 to 8.8, and the values range from 3.8 to 14.2.
+While both wine types exhibit some extreme values, red wines show a much broader range, a higher central tendency, and more variation overall.
+This suggests that red wines tend to have both higher and more variable fixed acidity than white wines.
 
 residual sugar:
 
@@ -207,7 +226,17 @@ boxplot(redvine$residual.sugar, whitevine$residual.sugar,
         col = c("blue", "cyan"))
 
 ```
-The boxplot and summary statistics for residual sugar show a significant difference between red and white wines. For red wines, the first quartile (Q1) is 1.9, the third quartile (Q3) is 2.6, and the median is 2.2, giving an interquartile range (IQR) of 0.7. The outlier threshold lies between 0.85 and 3.65 g/dm³, and the overall values range from 1.0 to 10.8. This indicates a compact and fairly consistent distribution of residual sugar in red wines, with only a few moderate outliers. In contrast, white wines show a much wider spread. Their Q1 is 1.7, Q3 is 9.9, and the median is 5.2, resulting in an IQR of 8.2. The outlier interval spans from −10.6 to 22.2, which technically allows for all values to fall within the range (since negative sugar levels are not possible, this mainly reflects the high variability). The actual values range from 0.6 up to 65.8, with several extreme outliers visible on the boxplot. This clearly shows that white wines tend to have not only higher residual sugar levels than red wines, but also much greater variation. This is consistent with the broader styles of white wines, which often include sweet and semi-sweet varieties, unlike red wines that are typically drier.
+
+The boxplot and summary statistics for residual sugar show a significant difference between red and white wines.
+For red wines, the first quartile (Q1) is 1.9, the third quartile (Q3) is 2.6, and the median is 2.2, giving an interquartile range (IQR) of 0.7.
+The outlier threshold lies between 0.85 and 3.65 g/dm³, and the overall values range from 1.0 to 10.8.
+This indicates a compact and fairly consistent distribution of residual sugar in red wines, with only a few moderate outliers.
+In contrast, white wines show a much wider spread.
+Their Q1 is 1.7, Q3 is 9.9, and the median is 5.2, resulting in an IQR of 8.2.
+The outlier interval spans from −10.6 to 22.2, which technically allows for all values to fall within the range (since negative sugar levels are not possible, this mainly reflects the high variability).
+The actual values range from 0.6 up to 65.8, with several extreme outliers visible on the boxplot.
+This clearly shows that white wines tend to have not only higher residual sugar levels than red wines, but also much greater variation.
+This is consistent with the broader styles of white wines, which often include sweet and semi-sweet varieties, unlike red wines that are typically drier.
 density:
 
 ```{r}
@@ -249,15 +278,21 @@ boxplot(redvine$density, whitevine$density,
         col = c("blue", "cyan"))
 
 ```
-The comparison of density between red and white wines reveals subtle yet important differences. For red wines, the first quartile (Q1) is 0.9956, the third quartile (Q3) is 0.997835, and the median is 0.99675. This results in an interquartile range (IQR) of 0.002235, with the calculated outlier range spanning from 0.9922 to 1.0012. The observed density values for red wines range from 0.99007 to 1.00369, showing a compact distribution with only a few mild outliers. In white wines, the distribution is slightly wider. Q1 is 0.9917, Q3 is 0.9961, and the median is 0.99374, giving an IQR of 0.004375. The interval for identifying outliers ranges from 0.9852 to 1.0027, and actual values span from 0.9871 to 1.03898, with a few more extreme outliers than in red wine. While both wine types show a tight distribution of density values, white wines exhibit slightly more variation, likely due to a broader range of residual sugar levels, which affect the density of the final product. The presence of a few high outliers in white wine also suggests the inclusion of sweeter or more concentrated wine samples.
 
-3. [5pts] We would like to know whether mean fixed acidity of red wines of quality at most 6 is
-higher than mean fixed acidity of red wines of quality strictly larger than 6. Which statistical
-test would you use to answer this question and what are your conclusions? What would your
-answer be in the case of white wines? Repeat the experiment (for both red and white wines) for
-volatile acidity.
+The comparison of density between red and white wines reveals subtle yet important differences.
+For red wines, the first quartile (Q1) is 0.9956, the third quartile (Q3) is 0.997835, and the median is 0.99675.
+This results in an interquartile range (IQR) of 0.002235, with the calculated outlier range spanning from 0.9922 to 1.0012.
+The observed density values for red wines range from 0.99007 to 1.00369, showing a compact distribution with only a few mild outliers.
+In white wines, the distribution is slightly wider.
+Q1 is 0.9917, Q3 is 0.9961, and the median is 0.99374, giving an IQR of 0.004375.
+The interval for identifying outliers ranges from 0.9852 to 1.0027, and actual values span from 0.9871 to 1.03898, with a few more extreme outliers than in red wine.
+While both wine types show a tight distribution of density values, white wines exhibit slightly more variation, likely due to a broader range of residual sugar levels, which affect the density of the final product.
+The presence of a few high outliers in white wine also suggests the inclusion of sweeter or more concentrated wine samples.
+
+3.  [5pts] We would like to know whether mean fixed acidity of red wines of quality at most 6 is higher than mean fixed acidity of red wines of quality strictly larger than 6. Which statistical test would you use to answer this question and what are your conclusions? What would your answer be in the case of white wines? Repeat the experiment (for both red and white wines) for volatile acidity.
 
 a)red vine both tests
+
 ```{r}
 A<- redvine$fixed.acidity[redvine$quality <= 6]
 B <-  redvine$fixed.acidity[redvine$quality > 6]
@@ -266,12 +301,13 @@ rezultat <- t.test(A, B, alternative = "greater")
 print(rezultat)
 ```
 
-H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality > 6)
+H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality \> 6)
 
-H₁: μA > μB
+H₁: μA \> μB
 
-Since the p-value is 1, which is much greater than 0.05, the result is not statistically significant. Therefore, we fail to reject the null hypothesis.
-There is no evidence that red wines with quality ≤ 6 have higher mean fixed acidity than those with quality > 6.
+Since the p-value is 1, which is much greater than 0.05, the result is not statistically significant.
+Therefore, we fail to reject the null hypothesis.
+There is no evidence that red wines with quality ≤ 6 have higher mean fixed acidity than those with quality \> 6.
 
 ```{r}
 A<- redvine$volatile.acidity[redvine$quality <= 6]
@@ -281,12 +317,12 @@ rezultat <- t.test(A, B, alternative = "greater")
 print(rezultat)
 ```
 
+H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality \> 6)
 
-H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality > 6)
+H₁: μA \> μB
 
-H₁: μA > μB
-
-Since the p-value is less than 2.2e-16, which is much lesser than 0.05, the result is  statistically significant. Therefore, we reject the null hypothesis.
+Since the p-value is less than 2.2e-16, which is much lesser than 0.05, the result is statistically significant.
+Therefore, we reject the null hypothesis.
 
 b)white wine
 
@@ -298,12 +334,12 @@ rezultat <- t.test(A, B, alternative = "greater")
 print(rezultat)
 ```
 
+H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality \> 6)
 
-H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality > 6)
+H₁: μA \> μB
 
-H₁: μA > μB
-
-Since the p-value is 9.282e-10, which is much lesser than 0.05, the result is  statistically significant. Therefore, we reject the null hypothesis.
+Since the p-value is 9.282e-10, which is much lesser than 0.05, the result is statistically significant.
+Therefore, we reject the null hypothesis.
 
 ```{r}
 A<- whitevine$volatile.acidity[whitevine$quality <= 6]
@@ -312,13 +348,16 @@ B <-  whitevine$volatile.acidity[whitevine$quality > 6]
 rezultat <- t.test(A, B, alternative = "greater")
 print(rezultat)
 ```
-H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality > 6)
 
-H₁: μA > μB
+H₀: μA ≤ μB (mean fixed acidity of red wines with quality ≤ 6 is not greater than that of quality \> 6)
 
-Since the p-value is  p-value = 4.205e-07, which is much lesser than 0.05, the result is  statistically significant. Therefore, we reject the null hypothesis.
+H₁: μA \> μB
 
-4. [5pts] We would like to know whether there is a correlation between the perceived quality of red wines and the fixed acidity level. Which statistical test would you use to answer this question and what are your conclusions? Furthermore, test the correlation between the perceived quality of red wines and residual sugar levels. Lastly, repeat both tests for white wines and compare the results.
+Since the p-value is p-value = 4.205e-07, which is much lesser than 0.05, the result is statistically significant.
+Therefore, we reject the null hypothesis.
+
+4.  [5pts] We would like to know whether there is a correlation between the perceived quality of red wines and the fixed acidity level. Which statistical test would you use to answer this question and what are your conclusions? Furthermore, test the correlation between the perceived quality of red wines and residual sugar levels. Lastly, repeat both tests for white wines and compare the results.
+
 ```{r}
 #red wine  quality and fixed acidity
 cor.test(redvine$quality, redvine$fixed.acidity)
@@ -327,9 +366,16 @@ cor.test(redvine$quality, redvine$fixed.acidity)
 cor.test(redvine$quality, redvine$residual.sugar)
 
 ```
-There is a statistically significant positive correlation between the quality of red wines and their fixed acidity. The correlation coefficient is 0.124, which suggests a weak positive relationship. This means that as the quality of red wines increases, their fixed acidity tends to increase as well, although the strength of the relationship is relatively weak. Since the p-value is much smaller than 0.05, we reject the null hypothesis and conclude that there is indeed a non-zero correlation.
 
-There is no statistically significant correlation between the quality of red wines and their residual sugar levels. The correlation coefficient is very close to 0 (0.014), suggesting a negligible relationship. Since the p-value = 0.5832, which is greater than 0.05, we fail to reject the null hypothesis, indicating no significant linear correlation between these two variables.
+There is a statistically significant positive correlation between the quality of red wines and their fixed acidity.
+The correlation coefficient is 0.124, which suggests a weak positive relationship.
+This means that as the quality of red wines increases, their fixed acidity tends to increase as well, although the strength of the relationship is relatively weak.
+Since the p-value is much smaller than 0.05, we reject the null hypothesis and conclude that there is indeed a non-zero correlation.
+
+There is no statistically significant correlation between the quality of red wines and their residual sugar levels.
+The correlation coefficient is very close to 0 (0.014), suggesting a negligible relationship.
+Since the p-value = 0.5832, which is greater than 0.05, we fail to reject the null hypothesis, indicating no significant linear correlation between these two variables.
+
 ```{r}
 #white wine  quality and fixed acidity
 cor.test(whitevine$quality, whitevine$fixed.acidity)
@@ -338,14 +384,22 @@ cor.test(whitevine$quality, whitevine$fixed.acidity)
 cor.test(whitevine$quality, whitevine$residual.sugar)
 
 ```
-There is a statistically significant negative correlation between the quality of white wines and their fixed acidity. The correlation coefficient is -0.114, indicating a weak negative relationship. As the quality of white wines increases, their fixed acidity tends to decrease slightly. Since the p-value is much smaller than 0.05, we reject the null hypothesis and conclude that there is a significant negative correlation.
 
-There is a statistically significant negative correlation between the quality of white wines and their residual sugar levels. The correlation coefficient is -0.098, suggesting a weak negative relationship. As the quality of white wines increases, their residual sugar levels tend to decrease slightly. The p-value is very small (< 0.05), so we reject the null hypothesis and conclude a significant negative correlation.
+There is a statistically significant negative correlation between the quality of white wines and their fixed acidity.
+The correlation coefficient is -0.114, indicating a weak negative relationship.
+As the quality of white wines increases, their fixed acidity tends to decrease slightly.
+Since the p-value is much smaller than 0.05, we reject the null hypothesis and conclude that there is a significant negative correlation.
 
-5. [5pts] For at least ve of the above mentioned variables check whether the data for red wines is normally distributed. Repeat the analysis for white wines and interpret the results.
+There is a statistically significant negative correlation between the quality of white wines and their residual sugar levels.
+The correlation coefficient is -0.098, suggesting a weak negative relationship.
+As the quality of white wines increases, their residual sugar levels tend to decrease slightly.
+The p-value is very small (\< 0.05), so we reject the null hypothesis and conclude a significant negative correlation.
 
+5.  [5pts] For at least ve of the above mentioned variables check whether the data for red wines is normally distributed. Repeat the analysis for white wines and interpret the results.
 
-A Q-Q plot is a graphical tool used to compare the quantiles of a dataset against the quantiles of a theoretical distribution, typically the normal distribution. If the data points lie approximately along the diagonal line, it suggests that the data follows a normal distribution. A normal distribution is a symmetric, bell-shaped probability distribution where most of the data points cluster around the mean.
+A Q-Q plot is a graphical tool used to compare the quantiles of a dataset against the quantiles of a theoretical distribution, typically the normal distribution.
+If the data points lie approximately along the diagonal line, it suggests that the data follows a normal distribution.
+A normal distribution is a symmetric, bell-shaped probability distribution where most of the data points cluster around the mean.
 
 red wine:
 
@@ -373,6 +427,7 @@ qqnorm(redvine$chlorides, main = "Q-Q Plot: Red Wine Chlorides")
 qqline(redvine$chlorides, col = "red", lwd = 2)
 
 ```
+
 pH: Points closely follow the diagonal, approximately normal distribution.
 
 alcohol: overall decent alignment with the line, slight deviation at tails, hence roughly normal.
@@ -403,6 +458,7 @@ qqnorm(whitevine$chlorides, main = "Q-Q Plot: White Wine Chlorides")
 qqline(whitevine$chlorides, col = "red", lwd = 2)
 
 ```
+
 pH: Slight upward curve at ends.Slight deviation from normality, roughly symmetric.
 
 alcohol: Approximately normal distribution, with mild outliers.
